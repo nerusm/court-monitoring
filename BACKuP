@@ -1,0 +1,45 @@
+const byte interruptPin_2 = 2;
+const byte interruptPin_3 = 3;
+const byte ledPin = 13;
+byte prev_state_2 = LOW;
+byte prev_state_3 = LOW;
+byte curr_state_2 = LOW;
+byte curr_state_3 = LOW;
+
+const String KEY_WORD = "STATE_CHANGE_#PIN#-#CURR_STATE#";
+
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(ledPin, OUTPUT);
+  pinMode(interruptPin_2, INPUT_PULLUP);
+  pinMode(interruptPin_3, INPUT_PULLUP);
+  prev_state_2 = digitalRead(interruptPin_2);
+  prev_state_3 = digitalRead(interruptPin_3);
+  Serial.print("Starting state_2: ");
+  Serial.println(prev_state_2);
+  Serial.print("Starting state_3: ");
+  Serial.println(prev_state_3);
+
+}
+
+void loop() {
+  curr_state_2 = digitalRead(interruptPin_2);
+  curr_state_3 = digitalRead(interruptPin_3);
+  if (curr_state_2 != prev_state_2) {
+    Serial.print("State Changed for Pin 2:: ");
+    Serial.print(curr_state_2);
+    Serial.print("-");
+    Serial.println(prev_state_2);
+    prev_state_2 = curr_state_2;
+    delay(500);
+  }
+  if (curr_state_3 != prev_state_3) {
+    Serial.print("State Changed for Pin 3:: ");
+    Serial.print(curr_state_3);
+    Serial.print("-");
+    Serial.println(prev_state_3);
+    prev_state_3 = curr_state_3;
+    delay(500);
+  }
+}

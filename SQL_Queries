@@ -1,0 +1,24 @@
+CREATE TABLE `FB_MANAGE_V01`.`courts` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `court_no` INT NOT NULL,
+  `curr_state` VARCHAR(10) NOT NULL,
+  `total_run_time` FLOAT NOT NULL,
+  PRIMARY KEY (`id`, `court_no`));
+
+
+
+CREATE TABLE `court_usage` (
+  `court_no` int(11) NOT NULL,
+  `curr_state` varchar(10) NOT NULL,
+  `start_time` datetime NOT NULL,
+  `end_time` datetime NOT NULL,
+  `run_time` int(11) NOT NULL,
+  PRIMARY KEY (`curr_state`,`court_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `FB_MANAGE_V01`.`courts` (`court_no`, `curr_state`, `total_run_time`) VALUES (1, "OPEN", 0);
+INSERT INTO `FB_MANAGE_V01`.`courts` (`court_no`, `curr_state`, `total_run_time`) VALUES (2, "OPEN", 0);
+INSERT INTO `FB_MANAGE_V01`.`courts` (`court_no`, `curr_state`, `total_run_time`) VALUES (3, "OPEN", 0);
+INSERT INTO `FB_MANAGE_V01`.`courts` (`court_no`, `curr_state`, `total_run_time`) VALUES (4, "OPEN", 0);
+INSERT INTO `FB_MANAGE_V01`.`courts` (`court_no`, `curr_state`, `total_run_time`) VALUES (5, "OPEN", 0);
+
